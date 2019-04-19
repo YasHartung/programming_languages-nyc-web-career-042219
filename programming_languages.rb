@@ -8,7 +8,10 @@ def reformat_languages(languages)
     language_data.each do |language_name, data|
       data.each do |type, type_data|
           new_hash[language_name] = { type => type_data}
-        new_hash[language_name][:style] << style
+        if new_hash[language_name][:style].length == 0
+          new_hash[language_name][:style] = [style]
+        else new_hash[language_name][:style] << style
+        end
       end
     end
   end
