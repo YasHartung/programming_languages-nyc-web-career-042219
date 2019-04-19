@@ -7,7 +7,10 @@ def reformat_languages(languages)
   languages.each do |style, language_data|
     language_data.each do |language_name, data|
       data.each do |type, type_data|
-        new_hash[language_name] = { type => type_data, style: style}
+        if new_hash[language_name][:type] == nil
+          new_hash[language_name] = { type => type_data}
+        end
+        new_hash[language_name][:style] << style
       end
     end
   end
